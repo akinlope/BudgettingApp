@@ -36,12 +36,12 @@ export const createExpense = (name, amount, budgetId) => {
         budgetId: budgetId
     };
 
-    const existingBudgets = fetchData("budgets") ?? [];
-    return localStorage.setItem("budgets", JSON.stringify([...existingBudgets, newItem]))
+    const existingBudgets = fetchData("expenses") ?? [];
+    return localStorage.setItem("expenses", JSON.stringify([...existingBudgets, newItem]))
 }
 
 // delete items
-export const deleteItem = ({key}) => {
+export const deleteItem = ({ key }) => {
     return localStorage.removeItem(key)
 }
 
@@ -53,15 +53,24 @@ export const formatCurrency = (amt) => {
     })
 }
 
+// format Percentage 
+export const formatPercentage = (amt) => {
+    return amt.toLocaleString(undefined, {
+        style: "percent", 
+        minimumFractionDigits: 0
+    })
+}
+
 // total spent by budget
 export const calculateSpentByBudget = (budgetId) => {
     const expenses = fetchData("expenses") ?? [];
     const budgetSpent = expenses.reduce((acc, expense) => {
-        // check if expense.id === budgetId passed in
-        // if (expense.budgetId !== budgetId) return;
-
-        // add the current amount to my total 
+// return console.log(expense);
+        if (expense.name.bugetId !== budgetId) return acc;
         return acc += parseInt(expense.name.amount)
     }, 0);
     return budgetSpent;
 }
+
+
+
