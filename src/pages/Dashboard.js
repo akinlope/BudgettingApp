@@ -8,12 +8,14 @@ import Intro from "../components/Intro";
 // helper functions
 import { createBudget, createExpense, fetchData, waait } from "../helpers";
 import BudgetItem from "../components/BudgetItem";
+import Table from "../components/Table";
 // import Error from "./Error"
 // loader
 export function dashboardLoader() {
     const userName = fetchData("userName");
     const budgets = fetchData("budgets");
-    return { userName, budgets }
+    const expenses = fetchData("expenses");
+    return { userName, budgets, expenses }
 }
 
 // action 
@@ -64,7 +66,8 @@ export async function dashboardAction({ request }) {
 // console.log("Showing");
 
 const Dashboard = () => {
-    const { userName, budgets } = useLoaderData()
+    const { userName, budgets, expenses } = useLoaderData()
+    
     return (
         <>
             {userName ? <div className="dashboard">
@@ -90,6 +93,17 @@ const Dashboard = () => {
                                         })
                                     }
                                 </div>
+                                {/* Recently added expenses */}
+                                {
+expenses && expenses.length > 0 && (
+    <div className="grid-md">
+        <h2>Recent Expenses</h2>
+<Table expenses={expenses.sort((a, b)=> (
+    b.createdAt - a.createdAt
+))}/>
+    </div>
+)
+                                }
                             </div>
                         ) 
                         : (
