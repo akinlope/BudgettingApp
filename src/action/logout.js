@@ -7,11 +7,13 @@ import { deleteItem } from "../helpers";
 export async function logoutAction(){
     // delete user
     deleteItem({
-        key: "userName",
-        
+        key: "userName", 
     })
     deleteItem({
         key: "budgets"
+    })
+    deleteItem({
+        key: "expenses"
     })
     
     toast.success("You've been deleted!")

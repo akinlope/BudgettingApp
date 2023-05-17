@@ -1,11 +1,7 @@
 import { calculateSpentByBudget, formatCurrency, formatPercentage } from "../helpers";
 
 const BudgetItem = ({ budget }) => {
-    console.log(budget.color);
-    // const spent = calculateSpentByBudget(budget);
-    // console.log(spent);
-    // const key = { ...localStorage }
-    // console.log(key);
+    
    const spent = calculateSpentByBudget(budget.id);
         
 

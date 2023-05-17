@@ -45,6 +45,11 @@ export const deleteItem = ({ key }) => {
     return localStorage.removeItem(key)
 }
 
+
+
+// FORMATTING
+
+
 // Format currency
 export const formatCurrency = (amt) => {
     return amt.toLocaleString(undefined, {
@@ -61,6 +66,11 @@ export const formatPercentage = (amt) => {
     })
 }
 
+
+// format Date
+export const formatDateToLocaleString = (epoch) => {
+    return new Date(epoch).toLocaleDateString();
+}
 // total spent by budget
 export const calculateSpentByBudget = (budgetId) => {
     const expenses = fetchData("expenses") ?? [];
