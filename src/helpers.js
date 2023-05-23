@@ -1,5 +1,5 @@
 export const waait = () => new Promise(res => setTimeout(
-    res, Math.random() * 5000
+    res, Math.random() * 200
 ))
 // colors
 const generateRandomColor = () => {
@@ -10,6 +10,17 @@ const generateRandomColor = () => {
 // local storage
 export const fetchData = (key) => {
     return JSON.parse(localStorage.getItem(key));
+};
+
+export const getAllMatchingItems = ({category, key, value
+}) => {
+    // console.log({
+    //     category: category,
+    //     key: key,
+    //     value: value
+    // });
+    const data = fetchData(category) ?? [];
+    return data.filter((item) => item[key] === value)
 };
 
 // create budget 
@@ -40,10 +51,17 @@ export const createExpense = (name, amount, budgetId) => {
     return localStorage.setItem("expenses", JSON.stringify([...existingBudgets, newItem]))
 }
 
-// delete items
-export const deleteItem = ({ key }) => {
-    return localStorage.removeItem(key)
+// delete items 
+export const deleteItem = ({key, id}) => {
+    
+    const existingData = fetchData(key);
+    if(id){
+        const newData = existingData.filter((item) => item.id !== id)
+        return localStorage.setItem(key, JSON.stringify(newData))
+    }
+    return localStorage.removeItem(key); 
 }
+
 
 
 

@@ -7,20 +7,20 @@ const Table = ({ expenses }) => {
             <table>
                 <thead>
                     <tr>
-{
-    ["Name", "Amount", "Date"].map((elem, i)=> (
-        <th key={i}>{elem}</th>
-    ))
-}
+                        {
+                            ["Name", "Amount", "Date", "Budget", " "].map((elem, i) => (
+                                <th key={i}>{elem}</th>
+                            ))
+                        }
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        expenses.map((expense)=> (
+                        expenses.map((expense) => (
                             <tr key={expense.id}>
-                                <ExpenseItem expense={expense}/>
+                                <ExpenseItem expense={expense} />
                             </tr>
-                        ))
+                        )).slice(0, 8)
                     }
                 </tbody>
             </table>
