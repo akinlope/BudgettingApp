@@ -29,12 +29,11 @@ export async function expenseDeleteAction({ request }) {
             throw new Error("Oops there was a problem deleting your expense.")
         }
     }
-
 }
 
 
 
-const ViewAllExpenses = () => {
+const Expenses = () => {
     const { expenses } = useLoaderData();
     
 
@@ -58,6 +57,6 @@ const ViewAllExpenses = () => {
     );
 }
 
-export default ViewAllExpenses;
+export default Expenses;
 
 
