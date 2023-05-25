@@ -3,13 +3,16 @@ import Main from "./layouts/Main";
 // actions
 import { logoutAction } from "./action/logout";
 // Routes
-import  { mainLoader } from "./layouts/Main";
+import { mainLoader } from "./layouts/Main";
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
-import ViewAllExpense, {expenseDeleteAction, expensesLoader} from "./pages/ViewAllExpenses";
+import Expenses, { expenseDeleteAction, expensesLoader } from "./pages/ViewAllExpenses";
 // library
 import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import BudgetPage, { budgetDeleteAction, budgetLoader } from "./pages/BudgetPage";
+import { deleteBudget } from "./action/deleteBudget";
+
 
 const router = createBrowserRouter([
   {
@@ -23,13 +26,27 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         loader: dashboardLoader,
         action: dashboardAction,
-        // errorElement: <Error />
+        errorElement: <Error />
       },
       {
-        path: "viewallexpenses",
-        element: <ViewAllExpense />,
+        path: "budget/:id",
+        element: <BudgetPage />,
+        loader: budgetLoader,
+        action: budgetDeleteAction,
+        errorElement: <Error />,
+        children: [
+          {
+            path: "delete",
+            action: deleteBudget
+          }
+        ]
+      },
+      {
+        path: "budget",
+        element: <Expenses />,
         loader: expensesLoader,
         action: expenseDeleteAction,
+        errorElement: <Error />
       },
       {
         path: "logout",

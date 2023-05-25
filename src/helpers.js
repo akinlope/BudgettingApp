@@ -14,13 +14,19 @@ export const fetchData = (key) => {
 
 export const getAllMatchingItems = ({category, key, value
 }) => {
-    // console.log({
-    //     category: category,
-    //     key: key,
-    //     value: value
-    // });
+    
     const data = fetchData(category) ?? [];
-    return data.filter((item) => item[key] === value)
+    // console.log(data);
+    return data.filter((item) => item[key] === value);
+};
+
+
+export const getAllMatchingItems2 = ({category, key, value
+}) => {
+    
+    const data = fetchData(category) ?? [];
+    // console.log(data);
+    return data.filter((item) => item.name.bugetId === value);
 };
 
 // create budget 

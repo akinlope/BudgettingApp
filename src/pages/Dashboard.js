@@ -117,7 +117,7 @@ const Dashboard = () => {
                                                 expenses.length > 8 && (
                                                     // {/* Button to view all expenses */}
 
-                                                    <Link to="/viewallexpenses" className=" btn btn--dark">
+                                                    <Link to="/budget" className=" btn btn--dark">
                                                         View all expenses
                                                     </Link>
                                                 )

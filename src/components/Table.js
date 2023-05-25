@@ -1,6 +1,6 @@
 import ExpenseItem from "./ExpenseItem";
 
-const Table = ({ expenses }) => {
+const Table = ({ expenses, showBudget = true}) => {
     // console.log(expenses);
     return (
         <div className="table">
@@ -8,7 +8,7 @@ const Table = ({ expenses }) => {
                 <thead>
                     <tr>
                         {
-                            ["Name", "Amount", "Date", "Budget", " "].map((elem, i) => (
+                            ["Name", "Amount", "Date", showBudget ? "Budget" : "", " "].map((elem, i) => (
                                 <th key={i}>{elem}</th>
                             ))
                         }
@@ -18,7 +18,7 @@ const Table = ({ expenses }) => {
                     {
                         expenses.map((expense) => (
                             <tr key={expense.id}>
-                                <ExpenseItem expense={expense} />
+                                <ExpenseItem expense={expense} showBudget={showBudget} />
                             </tr>
                         )).slice(0, 8)
                     }
