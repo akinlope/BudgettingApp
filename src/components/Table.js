@@ -1,6 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 
-const Table = ({ expenses, showBudget = true}) => {
+const 
+Table = ({ expenses, showBudget = true }) => {
     // console.log(expenses);
     return (
         <div className="table">

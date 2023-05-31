@@ -6,7 +6,7 @@ import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import Intro from "../components/Intro";
 // helper functions
-import { createBudget, createExpense, deleteItem, fetchData, waait } from "../helpers";
+import { createBudget, createExpense, deleteItem, fetchData } from "../helpers";
 import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 // import Error from "./Error"
@@ -20,7 +20,7 @@ export function dashboardLoader() {
 
 // action 
 export async function dashboardAction({ request }) {
-    await waait();
+    // await waait();
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 

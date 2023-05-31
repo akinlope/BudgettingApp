@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { createExpense, deleteItem, getAllMatchingItems, getAllMatchingItems2, waait } from "../helpers";
+import { createExpense, deleteItem, getAllMatchingItems, getAllMatchingItems2 } from "../helpers";
 import BudgetItem from "../components/BudgetItem";
 import AddExpenseForm from "../components/AddExpenseForm";
 import Table from "../components/Table";
@@ -31,7 +31,7 @@ export async function budgetLoader({ params, showDelete = true}) {
 }
 
 export async function budgetDeleteAction({ request }) {
-    await waait();
+    // await waait();
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 

@@ -2,7 +2,7 @@ import { Link, useFetcher } from "react-router-dom";
 import { TrashIcon } from "@heroicons/react/24/solid"
 import { formatCurrency, formatDateToLocaleString, getAllMatchingItems } from "../helpers";
 
-const ExpenseItem = ({ expense, showBudget = true }) => {
+const ExpenseItem = ({ expense, showBudget }) => {
 
     const fetcher = useFetcher()
     const budget = getAllMatchingItems({
@@ -11,7 +11,7 @@ const ExpenseItem = ({ expense, showBudget = true }) => {
         value: expense.name.bugetId
     })[0];
 
-    // console.log(budget);
+    // console.log(budget.id);
 
     return (
         <>
@@ -19,14 +19,14 @@ const ExpenseItem = ({ expense, showBudget = true }) => {
             <td>{formatCurrency(parseInt(expense.name.amount))}</td>
             <td>{formatDateToLocaleString(expense.createdAt)}</td>
             {
-                showBudget ? (
-                    <td><Link to={`budget/${budget.id}`} style={{
+                showBudget && (
+                    
+                    <td><Link to={`/budget/${budget.id}`} style={{
                         "--accent": budget.color
                     }}>
                         {budget.name.name}
-                    </Link></td>)
-                    :
-                    ""
+                    </Link></td>
+                    )
             }
             <td>
 

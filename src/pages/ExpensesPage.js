@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { deleteItem, fetchData, waait } from "../helpers";
+import { deleteItem, fetchData } from "../helpers";
 import Table from "../components/Table";
 import { toast } from "react-toastify";
 import Error from "./Error";
@@ -11,7 +11,7 @@ export function expensesLoader() {
 }
 
 export async function expenseDeleteAction({ request }) {
-    await waait();
+    // await waait();
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 
@@ -33,7 +33,7 @@ export async function expenseDeleteAction({ request }) {
 
 
 
-const Expenses = () => {
+const ExpensesPage = () => {
     const { expenses } = useLoaderData();
     
 
@@ -45,7 +45,7 @@ const Expenses = () => {
                 expenses && expenses.length > 0 ? (
                     <div className="grid-md">
                         <h2>Recent Expenses <small>({expenses.length} total)</small></h2>
-                        <Table expenses={expenses} />
+                        <Table expenses={expenses}/>
                     </div>
                 )
                     :
@@ -57,6 +57,6 @@ const Expenses = () => {
     );
 }
 
-export default Expenses;
+export default ExpensesPage;
 
 
