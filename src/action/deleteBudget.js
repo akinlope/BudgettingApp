@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { deleteItem, getAllMatchingItems, getAllMatchingItems2 } from "../helpers";
+import { deleteItem, getAllMatchingItems2 } from "../helpers";
 import Error from "../pages/Error";
 import { redirect } from "react-router-dom";
 
