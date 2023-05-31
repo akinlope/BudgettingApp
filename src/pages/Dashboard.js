@@ -20,7 +20,7 @@ export function dashboardLoader() {
 
 // action 
 export async function dashboardAction({ request }) {
-    await waait();
+    // await waait();
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data);
 

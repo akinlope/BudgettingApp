@@ -6,12 +6,13 @@ import { logoutAction } from "./action/logout";
 import { mainLoader } from "./layouts/Main";
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
-import Expenses, { expenseDeleteAction, expensesLoader } from "./pages/ViewAllExpenses";
+import ExpensesPage, { expenseDeleteAction, expensesLoader } from "./pages/ExpensesPage";
 // library
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BudgetPage, { budgetDeleteAction, budgetLoader } from "./pages/BudgetPage";
 import { deleteBudget } from "./action/deleteBudget";
+
 
 
 const router = createBrowserRouter([
@@ -39,11 +40,11 @@ const router = createBrowserRouter([
             path: "delete",
             action: deleteBudget
           }
-        ]
+        ],
       },
       {
         path: "budget",
-        element: <Expenses />,
+        element: <ExpensesPage />,
         loader: expensesLoader,
         action: expenseDeleteAction,
         errorElement: <Error />

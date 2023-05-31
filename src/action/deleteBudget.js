@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { deleteItem, getAllMatchingItems } from "../helpers";
+import { deleteItem, getAllMatchingItems, getAllMatchingItems2 } from "../helpers";
 import Error from "../pages/Error";
 import { redirect } from "react-router-dom";
 
@@ -10,16 +10,16 @@ export function deleteBudget({params}) {
             id: params.id
         });
 
-        const associatedExpenses = getAllMatchingItems({
+        const associatedExpenses = getAllMatchingItems2({
             category: "expenses",
-            key: "bugetId",
+            key: "",
             value: params.id
         });
 
         associatedExpenses.forEach((expense)=> {
             deleteItem({
                 key: "expenses",
-                id: params.id
+                id: expense.id
             });
         });
 
